@@ -44,6 +44,6 @@ competent_minsky
 9. To view all docker process status(including non running containers)
     docker ps -a
     
-10.     
+     
     
     
