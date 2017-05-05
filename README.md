@@ -32,7 +32,9 @@ competent_minsky
         displays, Hello World from host "<your container id>".
         
 7. To view logs
-    docker logs <container_id>
+    docker logs <container_id> or <container_name>
+    docker logs competent_minsky [or]
+    docker logs 4d885e64f451
     
 8. To get into container shell
     docker exec -it <container_id> sh
