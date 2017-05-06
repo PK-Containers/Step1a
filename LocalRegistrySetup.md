@@ -1,6 +1,10 @@
+Docker Local Registry Setup
 https://rominirani.com/docker-tutorial-series-part-6-docker-private-registry-15d1fd899255
 
-	HQSML-151665:local pkrish00c$ docker run -d -p 5000:5000 --restart=always --name registry registry:2
+Naming Convention Best Practices
+https://cloud.google.com/container-registry/docs/pushing-and-pulling
+
+	<THIS STEP IS NOT NEEDED>HQSML-151665:local pkrish00c$ docker run -d -p 5000:5000 --restart=always --name registry registry:2
 	Unable to find image 'registry:2' locally
 	2: Pulling from library/registry
 	709515475419: Already exists
@@ -11,7 +15,7 @@ https://rominirani.com/docker-tutorial-series-part-6-docker-private-registry-15d
 	Digest: sha256:412e3b6494f623a9f03f7f9f8b8118844deaecfea19e3a5f1ce54eed4f400296
 	Status: Downloaded newer image for registry:2
 	e34ebb4cc0ff7e15e9acda5414a29102f6e8ccdc84c6c76f3c4527d617985e5e
-	HQSML-151665:local pkrish00c$ docker ps
+	<THIS STEP IS NOT NEEDED>HQSML-151665:local pkrish00c$ docker ps
 	CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 	e34ebb4cc0ff        registry:2          "/entrypoint.sh /e..."   31 seconds ago      Up 30 seconds       0.0.0.0:5000->5000/tcp   registry
 	ef6013dcc2f2        testhello           "python hello.py"        8 hours ago         Up 8 hours          0.0.0.0:8080->8080/tcp   unruffled_borg
