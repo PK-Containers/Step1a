@@ -4,6 +4,10 @@ https://rominirani.com/docker-tutorial-series-part-6-docker-private-registry-15d
 Naming Convention Best Practices
 https://cloud.google.com/container-registry/docs/pushing-and-pulling
 
+Docker search registry not working, but push/pull works
+https://access.redhat.com/solutions/1586223
+
+
 	HQSML-151665:local pkrish00c$ docker run -d -p 5000:5000 --restart=always --name registry registry:2
 	Unable to find image 'registry:2' locally
 	2: Pulling from library/registry
