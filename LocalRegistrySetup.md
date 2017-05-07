@@ -26,12 +26,12 @@ https://access.redhat.com/solutions/1586223
 	HQSML-151665:python_learn pkrish00c$ docker images
 	REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
 	testhello                                       latest              5bacf52e49c2        8 hours ago         99 MB
-	HQSML-151665:python_learn pkrish00c$ docker tag testhello:latest localhost:5000/testhello:latest
+	HQSML-151665:python_learn pkrish00c$ docker tag helloworld:latest localhost:5000/helloworld:latest
 	HQSML-151665:python_learn pkrish00c$ docker images
 	REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
-	localhost:5000/testhello                        latest              5bacf52e49c2        8 hours ago         99 MB
+	localhost:5000/helloworld                        latest              5bacf52e49c2        8 hours ago         99 MB
 	testhello                                       latest              5bacf52e49c2        8 hours ago         99 MB
-	HQSML-151665:python_learn pkrish00c$ docker push localhost:5000/testhello:latest
+	HQSML-151665:python_learn pkrish00c$ docker push localhost:5000/helloworld:latest
 	The push refers to a repository [localhost:5000/testhello]
 	118cd39f6d6b: Pushed
 	9cec188f8aa8: Pushed
@@ -42,13 +42,13 @@ https://access.redhat.com/solutions/1586223
 	af4997faab5b: Pushed
 	9f8566ee5135: Pushed
 	latest: digest: sha256:de18d9943b99885d4de94b157d00ea18a82f300860d867e89bcb8d2d06307371 size: 1989
-	HQSML-151665:python_learn pkrish00c$ docker search localhost:5000/testhello
+	HQSML-151665:python_learn pkrish00c$ docker search localhost:5000/helloworld
 	Error response from daemon: Unexpected status code 404
-	HQSML-151665:python_learn pkrish00c$ docker search localhost:5000/testhello:latest
+	HQSML-151665:python_learn pkrish00c$ docker search localhost:5000/helloworld:latest
 	Error response from daemon: Unexpected status code 404
-	HQSML-151665:python_learn pkrish00c$ docker pull localhost:5000/testhello
+	HQSML-151665:python_learn pkrish00c$ docker pull localhost:5000/helloworld
 	Using default tag: latest
-	latest: Pulling from testhello
+	latest: Pulling from helloworld
 	Digest: sha256:de18d9943b99885d4de94b157d00ea18a82f300860d867e89bcb8d2d06307371
 	Status: Image is up to date for localhost:5000/testhello:latest
 	HQSML-151665:python_learn pkrish00c$
