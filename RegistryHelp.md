@@ -271,7 +271,7 @@ To remove an image, we first need to untag and then remove
 			Untagged: registry@sha256:412e3b6494f623a9f03f7f9f8b8118844deaecfea19e3a5f1ce54eed4f400296
 			Deleted: sha256:136c8b16df203ef26b2f39e24bd3f403b63be67610ec99a5b5af0cceac5c1b51
 
-If registry is not running and if image is available locally with tagged name (localhost:5000/helloworld), docker run will still work. Even if untagged it will work.
+If registry is not running and if image is available locally with tagged name (localhost:5000/helloworld), docker run will still work. 
 
 			HQSML-151665:Step1a pkrish00c$ docker tag helloworld:latest localhost:5000/helloworld:latest
 			HQSML-151665:Step1a pkrish00c$ docker ps
