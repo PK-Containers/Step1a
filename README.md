@@ -4,7 +4,7 @@ The scope of this step is to just understand how to build a docker image, run an
 
 		1. git clone https://github.com/PK-Containers/Step1a.git
 		
-		2. cd Step1
+		2. cd Step1a
 		
 		3. To build the docker image
 		    docker build -t helloworld .
