@@ -15,9 +15,9 @@ docker rmi $(docker images -q)
 
 Use -f for force remove
 
-##Docker Image creation
+## Docker Image creation
 
-###Notes
+### Notes
 1. Each command in Dockerfile is created as file system layer
 
 		HQSML-151665:Step1a pkrish00c$ docker build -t helloworld .
