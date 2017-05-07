@@ -368,7 +368,7 @@ Note port mentions (the port specified in run -p will not work if service is not
 		dd938ed236f5        registry:2          "/entrypoint.sh /e..."   7 minutes ago       Up 7 minutes        0.0.0.0:5000->5000/tcp   registry
 
 
-If all local images are deleted, registry running
+If all local images are deleted, registry not running
 
 		HQSML-151665:repositories pkrish00c$ docker run -d -p 4000:4000 localhost:5000/testhello2
 		Unable to find image 'localhost:5000/testhello2:latest' locally
