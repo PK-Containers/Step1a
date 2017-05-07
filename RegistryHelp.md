@@ -301,7 +301,98 @@ However if untagged, run or pull will not work ->
 
 
 
+=====================
 
+
+To store image in custom data folder, if unspecified stores in docker volume
+
+		HQSML-151665:apache-jmeter-3.2 pkrish00c$ docker run -d -p 5000:5000 --restart=always --name registry \
+		>   -v `pwd`/data:/var/lib/registry \
+		>   registry:2
+		dd938ed236f5c617bf081270123ff30bf6ac06a4ec51c77cad472b22661f5c19
+		HQSML-151665:apache-jmeter-3.2 pkrish00c$ docker ps
+		CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+		dd938ed236f5        registry:2          "/entrypoint.sh /e..."   4 seconds ago       Up 3 seconds        0.0.0.0:5000->5000/tcp   registry
+		
+		HQSML-151665:apache-jmeter-3.2 pkrish00c$ cd data
+		HQSML-151665:data pkrish00c$ ls
+	
+After pushing image to registry
+
+		HQSML-151665:Step1a pkrish00c$ docker tag testhello2:latest localhost:5000/testhello2:latest
+		HQSML-151665:Step1a pkrish00c$ docker push localhost:5000/testhello2:latest
+		The push refers to a repository [localhost:5000/testhello2]
+		66b34b5e7afe: Pushed
+		610b9a14bd68: Pushed
+		d9bda77de43f: Pushed
+		5f82b93a06b2: Pushed
+		9e9183fb7112: Pushed
+		84af43867f07: Pushed
+		af4997faab5b: Pushed
+		9f8566ee5135: Pushed
+		latest: digest: sha256:adf018e9a73b4f7675b6581bdccbc3f1a4e9ee362967e1a9a4c79e5a9d14fff8 size: 1989
+		
+		HQSML-151665:apache-jmeter-3.2 pkrish00c$ cd data
+		HQSML-151665:data pkrish00c$ ls
+		docker
+		HQSML-151665:data pkrish00c$ cd docker/
+		HQSML-151665:docker pkrish00c$ ls
+		registry
+		HQSML-151665:docker pkrish00c$ cd registry/
+		HQSML-151665:registry pkrish00c$ ls
+		v2
+		HQSML-151665:registry pkrish00c$ cd v2
+		HQSML-151665:v2 pkrish00c$ ls
+		blobs		repositories
+		HQSML-151665:v2 pkrish00c$ cd repositories/
+		HQSML-151665:repositories pkrish00c$ ls
+		testhello2
+
+
+Note port mentions (the port specified in run -p will not work if service is not running on that port. If service is running on 8080, port forwarding 4000 will not do any good.)
+
+
+		HQSML-151665:Step1 pkrish00c$ docker run -d -p 4000:4000 testhello1
+		840f291ca25e016cf74153ff72b5811170ea4b1c6ae14e278e6d636117d52a29
+		
+		HQSML-151665:Step1 pkrish00c$ docker ps
+		CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
+		840f291ca25e        testhello1          "python hello.py"        45 seconds ago      Up 44 seconds       0.0.0.0:4000->4000/tcp, 8080/tcp   thirsty_goldstine
+		dd938ed236f5        registry:2          "/entrypoint.sh /e..."   4 minutes ago       Up 4 minutes        0.0.0.0:5000->5000/tcp             registry
+		
+		HQSML-151665:Step1a pkrish00c$ docker run -d -p 4000:4000 testhello2
+		1de7526a8c21400691a43bcf1fdf3c5beb2b9d9575d1b428c34e2b060df3337f
+		HQSML-151665:Step1a pkrish00c$ docker ps
+		CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+		1de7526a8c21        testhello2          "python hello.py"        4 seconds ago       Up 3 seconds        0.0.0.0:4000->4000/tcp   priceless_raman
+		dd938ed236f5        registry:2          "/entrypoint.sh /e..."   7 minutes ago       Up 7 minutes        0.0.0.0:5000->5000/tcp   registry
+
+
+If all local images are deleted, registry running
+
+		HQSML-151665:repositories pkrish00c$ docker run -d -p 4000:4000 localhost:5000/testhello2
+		Unable to find image 'localhost:5000/testhello2:latest' locally
+		Pulling repository localhost:5000/testhello2
+		docker: Error: image testhello2:latest not found.
+		See 'docker run --help'.
+
+If all local images are deleted, registry running
+
+		HQSML-151665:repositories pkrish00c$ docker run -d -p 4000:4000 localhost:5000/testhello3
+		Unable to find image 'localhost:5000/testhello3:latest' locally
+		latest: Pulling from testhello3
+		12a7970a6783: Already exists
+		be08563ff9b0: Already exists
+		c0a1a9fe7293: Already exists
+		69c60719c12e: Already exists
+		ef9bb0aad4cb: Already exists
+		f78d59d4f460: Already exists
+		bdeefcf62dbe: Already exists
+		900e5d6bc4f1: Already exists
+		Digest: sha256:adf018e9a73b4f7675b6581bdccbc3f1a4e9ee362967e1a9a4c79e5a9d14fff8
+		Status: Downloaded newer image for localhost:5000/testhello3:latest
+		0ffa1dda3dcdfd5a9ed2021b67969844b217244ec1fe3c328dde452da9e1d43d
+		HQSML-151665:repositories pkrish00c$
 
 
 
